@@ -75,14 +75,17 @@ class _ChatUserCardState extends State<ChatUserCard> {
                   widget.user.name.toString(),
                   style: const TextStyle(fontWeight: FontWeight.w600),
                 ),
-                subtitle: Text(
-                  _message != null
-                      ? _message!.type == Type.image
-                          ? 'image'
-                          : _message!.msg.toString()
-                      : widget.user.about.toString(),
-                  maxLines: 1,
-                ),
+                subtitle: _message != null
+                    ? _message!.type == Type.image
+                        ? const Padding(
+                            padding: EdgeInsets.only(right: 200),
+                            child: Icon(Icons.photo),
+                          )
+                        : Text(
+                            _message!.msg.toString(),
+                            maxLines: 1,
+                          )
+                    : Text(widget.user.about.toString()),
                 trailing: _message == null
                     ? null
                     : _message!.read.toString().isEmpty &&

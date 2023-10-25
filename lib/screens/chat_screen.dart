@@ -1,6 +1,5 @@
 import 'dart:developer';
 import 'dart:io';
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:chatify/helper/app_colors.dart';
 import 'package:chatify/helper/my_date_util.dart';
@@ -53,7 +52,7 @@ class _ChatScreenState extends State<ChatScreen> {
               automaticallyImplyLeading: false,
               flexibleSpace: _appBar(),
             ),
-            backgroundColor: const Color.fromARGB(255, 234, 248, 255),
+            backgroundColor: const Color.fromARGB(255, 222, 222, 222),
             body: Column(
               children: [
                 Expanded(
@@ -325,7 +324,7 @@ class _ChatScreenState extends State<ChatScreen> {
               const EdgeInsets.only(top: 10, left: 10, bottom: 10, right: 5),
           minWidth: 0,
           shape: const CircleBorder(),
-          color: Colors.green,
+          color: primaryColor,
           child: Icon(
             Icons.send,
             color: secondaryColor,

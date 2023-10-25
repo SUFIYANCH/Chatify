@@ -46,23 +46,18 @@ class _MessageCardState extends State<MessageCard> {
           child: Container(
             padding: EdgeInsets.all(widget.message.type == Type.image
                 ? R.mq(context).width * 0.01
-                : R.mq(context).width * 0.04),
+                : R.mq(context).width * 0.025),
             margin: EdgeInsets.symmetric(
                 horizontal: R.mq(context).width * 0.04,
                 vertical: R.mq(context).height * 0.01),
             decoration: BoxDecoration(
-                color: const Color.fromARGB(255, 221, 245, 255),
-                border: Border.all(color: Colors.lightBlue),
+                color: const Color.fromARGB(255, 123, 173, 167),
                 borderRadius: widget.message.type == Type.image
-                    ? const BorderRadius.only(
-                        topLeft: Radius.circular(20),
-                        topRight: Radius.circular(20),
-                        bottomRight: Radius.circular(20),
-                        bottomLeft: Radius.circular(20))
+                    ? const BorderRadius.all(Radius.circular(20))
                     : const BorderRadius.only(
-                        topLeft: Radius.circular(30),
-                        topRight: Radius.circular(30),
-                        bottomRight: Radius.circular(30))),
+                        topLeft: Radius.circular(10),
+                        topRight: Radius.circular(10),
+                        bottomRight: Radius.circular(10))),
             child: widget.message.type == Type.text
                 ? Text(
                     widget.message.msg.toString(),
@@ -132,13 +127,12 @@ class _MessageCardState extends State<MessageCard> {
           child: Container(
             padding: EdgeInsets.all(widget.message.type == Type.image
                 ? R.mq(context).width * 0.01
-                : R.mq(context).width * 0.04),
+                : R.mq(context).width * 0.025),
             margin: EdgeInsets.symmetric(
                 horizontal: R.mq(context).width * 0.04,
                 vertical: R.mq(context).height * 0.01),
             decoration: BoxDecoration(
-                color: const Color.fromARGB(255, 218, 255, 176),
-                border: Border.all(color: Colors.lightGreen),
+                color: const Color.fromARGB(255, 164, 177, 193),
                 borderRadius: widget.message.type == Type.image
                     ? const BorderRadius.only(
                         topLeft: Radius.circular(20),
@@ -146,9 +140,9 @@ class _MessageCardState extends State<MessageCard> {
                         bottomRight: Radius.circular(20),
                         bottomLeft: Radius.circular(20))
                     : const BorderRadius.only(
-                        topLeft: Radius.circular(30),
-                        topRight: Radius.circular(30),
-                        bottomLeft: Radius.circular(30))),
+                        topLeft: Radius.circular(10),
+                        topRight: Radius.circular(10),
+                        bottomLeft: Radius.circular(10))),
             child: widget.message.type == Type.text
                 ? Text(
                     widget.message.msg.toString(),
