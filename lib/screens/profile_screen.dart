@@ -241,7 +241,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     ),
                     TextFormField(
                       onSaved: (newValue) =>
-                          ApiService.me.name = newValue ?? "",
+                          ApiService.me!.name = newValue ?? "",
                       validator: (value) => value != null && value.isNotEmpty
                           ? null
                           : "Required Field",
@@ -261,7 +261,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     ),
                     TextFormField(
                       onSaved: (newValue) =>
-                          ApiService.me.about = newValue ?? "",
+                          ApiService.me!.about = newValue ?? "",
                       validator: (value) => value != null && value.isNotEmpty
                           ? null
                           : "Required Field",

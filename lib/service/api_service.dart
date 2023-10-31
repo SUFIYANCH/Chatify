@@ -20,7 +20,7 @@ class ApiService {
   static FirebaseStorage storage = FirebaseStorage.instance;
 
   //for storing self information
-  static late ChatUserModel me;
+  static ChatUserModel? me;
 
   //to return current user
   static User get user => auth.currentUser!;
@@ -34,7 +34,7 @@ class ApiService {
 
     await fMessaging.getToken().then((t) {
       if (t != null) {
-        me.pushToken = t;
+        me!.pushToken = t;
         log("Push Token:$t");
       }
     });
@@ -61,7 +61,7 @@ class ApiService {
           "android_channel_id": "chats",
         },
         "data": {
-          "some_data": "User ID:${me.id}",
+          "some_data": "User ID:${me!.id}",
         },
       };
       var res = await post(Uri.parse("https://fcm.googleapis.com/fcm/send"),
@@ -112,6 +112,7 @@ class ApiService {
       if (user.exists) {
         me = ChatUserModel.fromJson(user.data()!);
         await getFirebaseMessagingToken();
+        // print(me.email);
         //for setting user status to active
         ApiService.updateActiveStatus(true);
 
@@ -178,7 +179,7 @@ class ApiService {
     await firestore
         .collection("users")
         .doc(user.uid)
-        .update({'name': me.name, 'about': me.about});
+        .update({'name': me!.name, 'about': me!.about});
   }
 
   //update profile picture of user
@@ -196,11 +197,11 @@ class ApiService {
     });
 
     //updating image in firestore database
-    me.image = await ref.getDownloadURL();
+    me!.image = await ref.getDownloadURL();
     await firestore
         .collection('users')
         .doc(user.uid)
-        .update({'image': me.image});
+        .update({'image': me!.image});
   }
 
   //for getting specific user info
@@ -217,7 +218,7 @@ class ApiService {
     firestore.collection("users").doc(user.uid).update({
       'is_online': isOnline,
       'last_active': DateTime.now().millisecondsSinceEpoch.toString(),
-      'push_token': me.pushToken,
+      'push_token': me!.pushToken,
     });
   }
 

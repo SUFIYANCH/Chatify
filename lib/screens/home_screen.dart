@@ -23,7 +23,9 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    ApiService.getSelfInfo();
+    ApiService.getSelfInfo().then((value) {
+      setState(() {});
+    });
 
 //for updating user active status according to lifecycle events
 //resume -- active/online
@@ -121,15 +123,19 @@ class _HomeScreenState extends State<HomeScreen> {
                       context,
                       MaterialPageRoute(
                         builder: (context) =>
-                            ProfileScreen(user: ApiService.me),
+                            ProfileScreen(user: ApiService.me!),
                       ));
                 },
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: CircleAvatar(
-                    backgroundImage:
-                        NetworkImage(ApiService.me.image.toString()),
-                  ),
+                  child: ApiService.me == null
+                      ? const CircleAvatar(
+                          child: Icon(Icons.person),
+                        )
+                      : CircleAvatar(
+                          backgroundImage:
+                              NetworkImage(ApiService.me!.image.toString()),
+                        ),
                 ),
               ),
               actions: [
